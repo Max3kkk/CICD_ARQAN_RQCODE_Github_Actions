@@ -3,7 +3,7 @@ name: Action Test
 on: 
   issues:
     types: 
-      - labeled
+      - opened
 
 jobs:
   label:
@@ -13,11 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./ # load and run local action
-        if: github.event.label.name == 'testing'
         name: Label an issue
         with:
           rqcode-token: ${{ secrets.RQCODE_TOKEN }}
-          platform: windows_10
-          username: ${{ secrets.ARQAN_USER }}
-          password: ${{ secrets.ARQAN_PASS }}
+          platform: google_android_10.x
+          # username: ${{ secrets.ARQAN_USER }}
+          # password: ${{ secrets.ARQAN_PASS }}
           create-issues: 'false'
